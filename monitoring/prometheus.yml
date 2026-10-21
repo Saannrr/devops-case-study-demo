@@ -1,0 +1,10 @@
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: 'node-express-app'
+    metrics_path: '/metrics'
+    static_configs:
+      # host.docker.internal digunakan agar Prometheus dalam container
+      # bisa men-scrape endpoint /metrics aplikasi di host/OrbStack
+      - targets: ['host.docker.internal:3000']
